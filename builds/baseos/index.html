@@ -1,0 +1,1797 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.80.0" />
+    <meta name="description" content="">
+
+
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+
+    <title>Base OS :: firebuild documentation</title>
+
+    
+    <link href="/css/nucleus.css?1618344124" rel="stylesheet">
+    <link href="/css/fontawesome-all.min.css?1618344124" rel="stylesheet">
+    <link href="/css/hybrid.css?1618344124" rel="stylesheet">
+    <link href="/css/featherlight.min.css?1618344124" rel="stylesheet">
+    <link href="/css/perfect-scrollbar.min.css?1618344124" rel="stylesheet">
+    <link href="/css/auto-complete.css?1618344124" rel="stylesheet">
+    <link href="/css/atom-one-dark-reasonable.css?1618344124" rel="stylesheet">
+    <link href="/css/theme.css?1618344124" rel="stylesheet">
+    <link href="/css/tabs.css?1618344124" rel="stylesheet">
+    <link href="/css/hugo-theme.css?1618344124" rel="stylesheet">
+    
+    
+
+    <script src="/js/jquery-3.3.1.min.js?1618344124"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+    </style>
+    
+  </head>
+  <body class="" data-url="/builds/baseos/">
+    <nav id="sidebar" class="">
+
+
+
+  <div id="header-wrapper">
+    <div id="header">
+      <strong>combust-labs/firebuild</strong>
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input id="search-by" type="search" placeholder="Search...">
+    <span data-search-clear=""><i class="fas fa-times"></i></span>
+</div>
+
+<script type="text/javascript" src="/js/lunr.min.js?1618344124"></script>
+<script type="text/javascript" src="/js/auto-complete.js?1618344124"></script>
+<script type="text/javascript">
+    
+        var baseurl = "http:\/\/example.org\/";
+    
+</script>
+<script type="text/javascript" src="/js/search.js?1618344124"></script>
+
+    
+  </div>
+  
+    <section id="homelinks">
+      <ul>
+        <li>
+            <a class="padding" href='/'><i class='fas fa-home'></i> Home</a>
+        </li>
+      </ul>
+    </section>
+  
+
+    <div class="highlightable">
+    <ul class="topics">
+
+        
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/" title="Installation" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/">
+          Installation
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/firecracker_jailer/" title="Firecracker and Jailer" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/firecracker_jailer/">
+          Firecracker and Jailer
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/golang/" title="Go programming language" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/golang/">
+          Go programming language
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/git/" title="Git" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/git/">
+          Git
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/docker/" title="Docker" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/docker/">
+          Docker
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/cni_plugins/" title="CNI plugins" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/cni_plugins/">
+          CNI plugins
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/installation/firebuild/" title="firebuild" class="dd-item
+        
+        
+        
+        ">
+      <a href="/installation/firebuild/">
+          firebuild
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/" title="Configuration" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/">
+          Configuration
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/" title="Commands" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/">
+          Commands
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/baseos/" title="baseos" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/baseos/">
+          baseos
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/inspect/" title="inspect" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/inspect/">
+          inspect
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/kill/" title="kill" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/kill/">
+          kill
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/ls/" title="ls" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/ls/">
+          ls
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/profile_create/" title="profile-create" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/profile_create/">
+          profile-create
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/profile_inspect/" title="profile-inspect" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/profile_inspect/">
+          profile-inspect
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/profile_ls/" title="profile-ls" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/profile_ls/">
+          profile-ls
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/purge/" title="purge" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/purge/">
+          purge
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/rootfs/" title="rootfs" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/rootfs/">
+          rootfs
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/commands/run/" title="run" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/commands/run/">
+          run
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/profiles/" title="Profiles" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/profiles/">
+          Profiles
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/storage_providers/" title="Storage providers" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/storage_providers/">
+          Storage providers
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/configuration/storage_providers/directory/" title="directory" class="dd-item
+        
+        
+        
+        ">
+      <a href="/configuration/storage_providers/directory/">
+          directory
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/" title="Builds" class="dd-item
+        parent
+        
+        
+        ">
+      <a href="/builds/">
+          Builds
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/baseos/" title="Base OS" class="dd-item
+        parent
+        active
+        
+        ">
+      <a href="/builds/baseos/">
+          Base OS
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/rootfs/" title="Application file system" class="dd-item
+        
+        
+        
+        ">
+      <a href="/builds/rootfs/">
+          Application file system
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/rootfs/dockerfile_simple/" title="From single stage Dockerfile" class="dd-item
+        
+        
+        
+        ">
+      <a href="/builds/rootfs/dockerfile_simple/">
+          From single stage Dockerfile
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/rootfs/dockerfile_multistage/" title="From multi-stage Dockerfile" class="dd-item
+        
+        
+        
+        ">
+      <a href="/builds/rootfs/dockerfile_multistage/">
+          From multi-stage Dockerfile
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/builds/rootfs/docker_image/" title="From Docker image" class="dd-item
+        
+        
+        
+        ">
+      <a href="/builds/rootfs/docker_image/">
+          From Docker image
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/networking/" title="Networking" class="dd-item
+        
+        
+        
+        ">
+      <a href="/networking/">
+          Networking
+          
+      </a>
+      
+      
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/networking/builds_network/" title="Build network" class="dd-item
+        
+        
+        
+        ">
+      <a href="/networking/builds_network/">
+          Build network
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/networking/run_network/" title="Run network" class="dd-item
+        
+        
+        
+        ">
+      <a href="/networking/run_network/">
+          Run network
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/networking/static_ip_assignment/" title="Static IP assignment" class="dd-item
+        
+        
+        
+        ">
+      <a href="/networking/static_ip_assignment/">
+          Static IP assignment
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/networking/exposing_on_host/" title="Exposing VMs on host interfaces" class="dd-item
+        
+        
+        
+        ">
+      <a href="/networking/exposing_on_host/">
+          Exposing VMs on host interfaces
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/git_repositories/" title="Git repositories" class="dd-item
+        
+        
+        
+        ">
+      <a href="/git_repositories/">
+          Git repositories
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+          
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/roadmap/" title="Roadmap" class="dd-item
+        
+        
+        
+        ">
+      <a href="/roadmap/">
+          Roadmap
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+          
+        
+    </ul>
+
+    
+    
+
+    
+    <section id="footer">
+      <p>Built with <a href="https://github.com/matcornic/hugo-theme-learn"><i class="fas fa-heart"></i></a> from <a href="https://getgrav.org">Grav</a> and <a href="https://gohugo.io/">Hugo</a></p>
+
+    </section>
+  </div>
+</nav>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/'></a> > <a href='/builds/'>Builds</a> > Base OS
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+              </div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+          <div id="chapter">
+        
+        <div id="body-inner">
+          
+
+        
+
+
+
+	
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+            </div> 
+        
+        </div>
+        
+
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="/builds/" title="Builds"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="/builds/rootfs/" title="Application file system" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js?1618344124"></script>
+    <script src="/js/perfect-scrollbar.min.js?1618344124"></script>
+    <script src="/js/perfect-scrollbar.jquery.min.js?1618344124"></script>
+    <script src="/js/jquery.sticky.js?1618344124"></script>
+    <script src="/js/featherlight.min.js?1618344124"></script>
+    <script src="/js/highlight.pack.js?1618344124"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom-3.6.0.js?1618344124"></script>
+    <script src="/js/learn.js?1618344124"></script>
+    <script src="/js/hugo-learn.js?1618344124"></script>
+    
+        
+            <script src="/mermaid/mermaid.js?1618344124"></script>
+        
+        <script>
+            mermaid.initialize({ startOnLoad: true });
+        </script>
+    
+    
+
+  </body>
+</html>

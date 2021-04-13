@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>http://example.org/builds/baseos/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/networking/builds_network/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/firecracker_jailer/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/builds/rootfs/dockerfile_simple/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/builds/rootfs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/builds/rootfs/dockerfile_multistage/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/golang/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/networking/run_network/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/builds/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/builds/rootfs/docker_image/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/git/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/networking/static_ip_assignment/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/docker/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/networking/exposing_on_host/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/networking/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/cni_plugins/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/git_repositories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/installation/firebuild/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/roadmap/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/baseos/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/storage_providers/directory/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/inspect/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/kill/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/ls/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/profile_create/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/profile_inspect/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/profile_ls/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/profiles/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/purge/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/rootfs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/commands/run/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/configuration/storage_providers/</loc>
+  </url>
+  
+  <url>
+    <loc>http://example.org/tags/</loc>
+  </url>
+  
+</urlset>
