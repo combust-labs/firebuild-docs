@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ls on firebuild documentation</title>
-    <link>http://example.org/configuration/commands/ls/</link>
+    <link>https://combust-labs.github.io/firebuild-docs/configuration/commands/ls/</link>
     <description>Recent content in ls on firebuild documentation</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/configuration/commands/ls/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://combust-labs.github.io/firebuild-docs/configuration/commands/ls/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

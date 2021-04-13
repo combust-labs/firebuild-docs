@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Run network on firebuild documentation</title>
-    <link>http://example.org/networking/run_network/</link>
+    <link>https://combust-labs.github.io/firebuild-docs/networking/run_network/</link>
     <description>Recent content in Run network on firebuild documentation</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="http://example.org/networking/run_network/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="https://combust-labs.github.io/firebuild-docs/networking/run_network/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

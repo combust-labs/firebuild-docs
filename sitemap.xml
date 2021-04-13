@@ -3,156 +3,156 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/builds/baseos/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/baseos/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/networking/builds_network/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/builds_network/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/firecracker_jailer/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/firecracker_jailer/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/builds/rootfs/dockerfile_simple/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/rootfs/dockerfile_simple/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/builds/rootfs/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/rootfs/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/builds/rootfs/dockerfile_multistage/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/rootfs/dockerfile_multistage/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/golang/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/golang/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/networking/run_network/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/run_network/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/builds/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/builds/rootfs/docker_image/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/builds/rootfs/docker_image/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/git/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/git/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/networking/static_ip_assignment/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/static_ip_assignment/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/docker/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/docker/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/networking/exposing_on_host/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/exposing_on_host/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/networking/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/cni_plugins/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/cni_plugins/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/git_repositories/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/git_repositories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/installation/firebuild/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/installation/firebuild/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/roadmap/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/roadmap/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/baseos/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/baseos/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/categories/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/storage_providers/directory/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/storage_providers/directory/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/inspect/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/inspect/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/kill/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/kill/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/ls/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/ls/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/profile_create/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/profile_create/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/profile_inspect/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/profile_inspect/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/profile_ls/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/profile_ls/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/profiles/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/profiles/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/purge/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/purge/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/rootfs/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/rootfs/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/commands/run/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/run/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/configuration/storage_providers/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/storage_providers/</loc>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/tags/</loc>
   </url>
   
 </urlset>
