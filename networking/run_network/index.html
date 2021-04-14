@@ -12,20 +12,20 @@
     <title>Run network :: firebuild documentation</title>
 
     
-    <link href="/firebuild-docs/css/nucleus.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/fontawesome-all.min.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/hybrid.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/featherlight.min.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/perfect-scrollbar.min.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/auto-complete.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/atom-one-dark-reasonable.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/theme.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/tabs.css?1618344307" rel="stylesheet">
-    <link href="/firebuild-docs/css/hugo-theme.css?1618344307" rel="stylesheet">
+    <link href="/firebuild-docs/css/nucleus.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/fontawesome-all.min.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/hybrid.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/featherlight.min.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/perfect-scrollbar.min.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/auto-complete.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/atom-one-dark-reasonable.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/theme.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/tabs.css?1618431593" rel="stylesheet">
+    <link href="/firebuild-docs/css/hugo-theme.css?1618431593" rel="stylesheet">
     
     
 
-    <script src="/firebuild-docs/js/jquery-3.3.1.min.js?1618344307"></script>
+    <script src="/firebuild-docs/js/jquery-3.3.1.min.js?1618431593"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -51,14 +51,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/firebuild-docs/js/lunr.min.js?1618344307"></script>
-<script type="text/javascript" src="/firebuild-docs/js/auto-complete.js?1618344307"></script>
+<script type="text/javascript" src="/firebuild-docs/js/lunr.min.js?1618431593"></script>
+<script type="text/javascript" src="/firebuild-docs/js/auto-complete.js?1618431593"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/combust-labs.github.io\/firebuild-docs\/";
     
 </script>
-<script type="text/javascript" src="/firebuild-docs/js/search.js?1618344307"></script>
+<script type="text/javascript" src="/firebuild-docs/js/search.js?1618431593"></script>
 
     
   </div>
@@ -960,32 +960,6 @@
  
   
     
-    <li data-nav-id="/firebuild-docs/networking/static_ip_assignment/" title="Static IP assignment" class="dd-item
-        
-        
-        
-        ">
-      <a href="/firebuild-docs/networking/static_ip_assignment/">
-          Static IP assignment
-          
-      </a>
-      
-      
-    </li>
-  
- 
-
-            
-          
-            
-            
-
-
-
-
- 
-  
-    
     <li data-nav-id="/firebuild-docs/networking/exposing_on_host/" title="Exposing VMs on host interfaces" class="dd-item
         
         
@@ -1163,7 +1137,75 @@
 </span><span style="color:#e6db74">    ]
 </span><span style="color:#e6db74">}
 </span><span style="color:#e6db74">EOF</span>
-</code></pre></div>
+</code></pre></div><h2 id="assigning-an-ip-address">Assigning an IP address</h2>
+<p>The <code>run</code> command offers the <code>--ip-address</code> flag which allows selecting an IP address to assign to the VM. Assuming that no other VM uses the requested IP address, the assignment will succeed.</p>
+<h3 id="an-example-running-a-3-vm-hashicorp-consul-cluster">An example: running a 3 VM HashiCorp Consul cluster</h3>
+<p>Start 3 VMs using predefined IP addresses in the <code>machines</code> network:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#75715e"># Start Consul 1 with IP 192.168.127.10:</span>
+sudo firebuild run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>combust-labs/consul:1.9.4 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machines <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --ip-address<span style="color:#f92672">=</span>192.168.127.10 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>consul1 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --daemonize <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -- agent -server -client 0.0.0.0 -bootstrap-expect <span style="color:#ae81ff">3</span> -data-dir /consul/data -retry-join 192.168.127.11 -retry-join 192.168.127.12 -node consul1
+
+<span style="color:#75715e"># Start Consul 2 with IP 192.168.127.11:</span>
+sudo firebuild run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>combust-labs/consul:1.9.4 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machines <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --identity-file<span style="color:#f92672">=</span>/home/radek/.ssh/github.pub <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --ssh-user<span style="color:#f92672">=</span>alpine <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --ip-address<span style="color:#f92672">=</span>192.168.127.11 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>consul2 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --daemonize <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -- agent -server -client 0.0.0.0 -bootstrap-expect <span style="color:#ae81ff">3</span> -data-dir /consul/data -retry-join 192.168.127.10 -retry-join 192.168.127.12 -node consul2
+
+<span style="color:#75715e"># Start Consul 3 with IP 192.168.127.10:</span>
+sudo firebuild run <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>combust-labs/consul:1.9.4 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machines <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --ip-address<span style="color:#f92672">=</span>192.168.127.12 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>consul3 <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --daemonize <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -- agent -server -client 0.0.0.0 -bootstrap-expect <span style="color:#ae81ff">3</span> -data-dir /consul/data -retry-join 192.168.127.10 -retry-join 192.168.127.11 -node consul3
+</code></pre></div><p>After a few seconds required to boot the VMs, start the services and reconcile the cluster, query one of the nodes for status:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ curl http://192.168.127.12:8500/v1/status/leader
+</code></pre></div><p>The output will be similar to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh"><span style="color:#e6db74">&#34;192.168.127.10:8300&#34;</span>
+</code></pre></div><p>Next, let&rsquo;s query the DNS. Consul nodes were launched with with the <code>-node</code> flags set. The cluster uses the default <code>8600</code> DNS port and default data center name of <code>dc1</code>. Hence, we can query for a specific node:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ dig @192.168.127.10 -p <span style="color:#ae81ff">8600</span> consul1.node.dc1.consul
+</code></pre></div><p>The response from the DNS should look similar to:</p>
+<pre><code>; &lt;&lt;&gt;&gt; DiG 9.11.3-1ubuntu1.14-Ubuntu &lt;&lt;&gt;&gt; @192.168.127.10 -p 8600 consul1.node.dc1.consul
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 13511
+;; flags: qr aa rd; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 2
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 4096
+;; QUESTION SECTION:
+;consul1.node.dc1.consul.	IN	A
+
+;; ANSWER SECTION:
+consul1.node.dc1.consul. 0	IN	A	192.168.127.10
+
+;; ADDITIONAL SECTION:
+consul1.node.dc1.consul. 0	IN	TXT	&quot;consul-network-segment=&quot;
+
+;; Query time: 1 msec
+;; SERVER: 192.168.127.10#8600(192.168.127.10)
+;; WHEN: Wed Apr 14 21:31:00 UTC 2021
+;; MSG SIZE  rcvd: 104
+</code></pre>
 
 
 
@@ -1734,22 +1776,6 @@
             
         
                     
-                        
-            
-            
-                
-                    
-                
-                
-
-                    
-                    
-                    
-
-                    
-            
-        
-                    
             
         
                     
@@ -1797,7 +1823,7 @@
 			<a class="nav nav-prev" href="/firebuild-docs/networking/builds_network/" title="Build network"> <i class="fa fa-chevron-left"></i></a>
 		
 		
-			<a class="nav nav-next" href="/firebuild-docs/networking/static_ip_assignment/" title="Static IP assignment" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+			<a class="nav nav-next" href="/firebuild-docs/networking/exposing_on_host/" title="Exposing VMs on host interfaces" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1807,19 +1833,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/firebuild-docs/js/clipboard.min.js?1618344307"></script>
-    <script src="/firebuild-docs/js/perfect-scrollbar.min.js?1618344307"></script>
-    <script src="/firebuild-docs/js/perfect-scrollbar.jquery.min.js?1618344307"></script>
-    <script src="/firebuild-docs/js/jquery.sticky.js?1618344307"></script>
-    <script src="/firebuild-docs/js/featherlight.min.js?1618344307"></script>
-    <script src="/firebuild-docs/js/highlight.pack.js?1618344307"></script>
+    <script src="/firebuild-docs/js/clipboard.min.js?1618431593"></script>
+    <script src="/firebuild-docs/js/perfect-scrollbar.min.js?1618431593"></script>
+    <script src="/firebuild-docs/js/perfect-scrollbar.jquery.min.js?1618431593"></script>
+    <script src="/firebuild-docs/js/jquery.sticky.js?1618431593"></script>
+    <script src="/firebuild-docs/js/featherlight.min.js?1618431593"></script>
+    <script src="/firebuild-docs/js/highlight.pack.js?1618431593"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/firebuild-docs/js/modernizr.custom-3.6.0.js?1618344307"></script>
-    <script src="/firebuild-docs/js/learn.js?1618344307"></script>
-    <script src="/firebuild-docs/js/hugo-learn.js?1618344307"></script>
+    <script src="/firebuild-docs/js/modernizr.custom-3.6.0.js?1618431593"></script>
+    <script src="/firebuild-docs/js/learn.js?1618431593"></script>
+    <script src="/firebuild-docs/js/hugo-learn.js?1618431593"></script>
     
         
-            <script src="/firebuild-docs/mermaid/mermaid.js?1618344307"></script>
+            <script src="/firebuild-docs/mermaid/mermaid.js?1618431593"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
