@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/firebuild-docs/images/favicon.png" type="image/png">
 
-    <title> :: firebuild documentation</title>
+    <title>Firebuild and iptables :: firebuild documentation</title>
 
     
     <link href="/firebuild-docs/css/nucleus.css?1618611818" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/firebuild-docs/">
+  <body class="" data-url="/firebuild-docs/networking/firebuild_and_iptables/">
     <nav id="sidebar" class="">
 
 
@@ -918,7 +918,7 @@
   
     
     <li data-nav-id="/firebuild-docs/networking/" title="Networking" class="dd-item
-        
+        parent
         
         
         ">
@@ -999,8 +999,8 @@
   
     
     <li data-nav-id="/firebuild-docs/networking/firebuild_and_iptables/" title="Firebuild and iptables" class="dd-item
-        
-        
+        parent
+        active
         
         ">
       <a href="/firebuild-docs/networking/firebuild_and_iptables/">
@@ -1092,61 +1092,123 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/firebuild-docs/'></a> > <a href='/firebuild-docs/networking/'>Networking</a> > Firebuild and iptables
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
+        
+          <div id="chapter">
         
         <div id="body-inner">
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="firebuild">firebuild</h1>
-<h2 id="convenience-of-containers-security-of-virtual-machines">Convenience of containers, security of virtual machines</h2>
-<p>With <code>firebuild</code>, you can build and deploy secure VMs directly from <code>Dockerfiles</code> and Docker images in just few minutes.</p>
-<p>The concept of <code>firebuild</code> is to leverage as much of the existing Docker world as possible. There are thousands of Docker images out there. Docker images are awesome because they encapsulate the software we want to run in our workloads, they also encapsulate dependencies. Dockerfiles are what Docker images are built from. Dockeriles are the blueprints of the modern infrastructure. There are thousands of them for almost anything one can imagine and new ones are very easy to write.</p>
-<p>With firebuild it is possible to:</p>
+
+	<h1 id="firebuild-and-iptables">Firebuild and iptables</h1>
+<p>Firebuild integrates with <code>iptables</code> to support selected operational features, outside of CNI. This page documents the <code>iptables</code> usage and gives more details on every case.</p>
+<h2 id="guest-ports-exposed-on-the-host">Guest ports exposed on the host</h2>
+<p>When running a VM with the <code>--port</code> flags, firebuild uses <code>iptables</code> to setup the routing from the host interface to the guest port indicated by the flag. The following happens:</p>
 <ul>
-<li>build root file systems directly from Dockerfiles</li>
-<li>tag and version root file systems</li>
-<li>run and manage microvms on a single host</li>
-<li>define run profiles</li>
+<li>a <code>FIREBUILD-FORWARD</code> chain is created in the <code>filter</code> table and a jump from <code>FORWARD</code> chain to the new chain is created</li>
+<li>an <code>FBD-&lt;vmid&gt;</code> chain is created in the <code>nat</code> table and a jump from <code>PREROUTING</code> chain to the new chain is created</li>
+<li>for every port, a rule is added to the <code>filter</code> <code>FIREBUILD-FORWARD</code> chain; the rule has the following format:</li>
 </ul>
-<h2 id="high-level-example">High level example</h2>
-<p>Build and start HashiCorp Consul 1.9.4 on Firecracker with three simple steps:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">iptables -t filter -A FIREBUILD-FORWARD <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;[*|interface-name]:int-host-port:int-dest-port:[tcp|udp]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp|udp <span style="color:#f92672">[</span>-i interface-name<span style="color:#f92672">]</span> -d ip-address-of-the-vm --dport int-host-port <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+</code></pre></div><ul>
+<li>for every port, a rule is added to the <code>nat</code> <code>FBD-&lt;vmid&gt;</code> chain; the rule has the following format:</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">iptables -t nat -A FBD-&lt;vmid&gt; <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;[*|interface-name]:int-host-port:int-dest-port:[tcp|udp]&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp|udp <span style="color:#f92672">[</span>-i interface-name<span style="color:#f92672">]</span> --dport int-host-port -j DNAT <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --to-destination ip-address-of-the-vm:int-dest-port
+</code></pre></div><p>When a VM is terminated:</p>
 <ul>
-<li>build a base operating system image</li>
-<li>build Consul image</li>
-<li>start the application</li>
+<li>the VM specific <code>nat</code> table chain is removed</li>
+<li>the <code>nat</code> <code>PREROUTING</code> jump is removed</li>
+<li>the <code>filter</code> <code>FIREBUILD-FORWARD</code> VM specific rules are removed</li>
+<li>the <code>filter</code> <code>FIREBUILD-FORWARD</code> chain remains with the <code>FORWARD</code> jump</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild baseos <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --dockerfile <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/baseos/_/alpine/3.12/Dockerfile
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild rootfs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --dockerfile<span style="color:#f92672">=</span>git+https://github.com/hashicorp/docker-consul.git:/0.X/Dockerfile <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machine-builds <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --tag<span style="color:#f92672">=</span>combust-labs/consul:1.9.4
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild run <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>consul1 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>combust-labs/consul:1.9.4 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machines <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8
-</code></pre></div><p>Find the IP of the <code>consul1</code> VM and query Consul:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">VMIP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>sudo firebuild inspect <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmm-id<span style="color:#f92672">=</span>consul1 | jq <span style="color:#e6db74">&#39;.NetworkInterfaces[0].StaticConfiguration.IPConfiguration.IP&#39;</span> -r<span style="color:#66d9ef">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ curl http://<span style="color:#e6db74">${</span>VMIP<span style="color:#e6db74">}</span>:8500/v1/status/leader
-<span style="color:#e6db74">&#34;127.0.0.1:8300&#34;</span>
-</code></pre></div>	
-  
+<h3 id="manual-configuration-example">Manual configuration example</h3>
+<p>This is what the above would look like if it was to be set manually up without explicit interface:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo iptables -t filter -N FIREBUILD-FORWARD
+sudo iptables -t filter -A FORWARD -j FIREBUILD-FORWARD
+sudo iptables -t filter -A FIREBUILD-FORWARD <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;*:16686:16686:tcp&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp -d 192.168.127.110 --dport <span style="color:#ae81ff">16686</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -N FDB-jaegervm
+sudo iptables -t nat -A PREROUTING -j FDB-jaegervm
+sudo iptables -t nat -A FDB-jaegervm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;*:16686:16686:tcp&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp --dport <span style="color:#ae81ff">16686</span> -j DNAT <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --to-destination 192.168.127.110:16686
+</code></pre></div><p>and with an interface, for example <code>eno1</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo iptables -t filter -N FIREBUILD-FORWARD
+sudo iptables -t filter -A FORWARD -j FIREBUILD-FORWARD
+sudo iptables -t filter -A FIREBUILD-FORWARD <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;eno1:16686:16686:tcp&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp -i eno1 -d 192.168.127.110 --dport <span style="color:#ae81ff">16686</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m state --state NEW,ESTABLISHED,RELATED -j ACCEPT
+sudo iptables -t nat -N FDB-jaegervm
+sudo iptables -t nat -A PREROUTING -j FDB-jaegervm
+sudo iptables -t nat -A FDB-jaegervm <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -m comment --comment <span style="color:#e6db74">&#34;eno1:16686:16686:tcp&#34;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    -p tcp -i eno1 --dport <span style="color:#ae81ff">16686</span> -j DNAT <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    --to-destination 192.168.127.110:16686
+</code></pre></div>
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+            </div> 
         
         </div>
         
@@ -1659,6 +1721,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1673,6 +1736,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1706,6 +1772,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1724,6 +1791,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1761,8 +1831,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/firebuild-docs/networking/run_network/" title="Run network"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/firebuild-docs/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/firebuild-docs/git_repositories/" title="Git repositories" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1794,4 +1866,3 @@
 
   </body>
 </html>
-

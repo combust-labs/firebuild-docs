@@ -9,7 +9,7 @@
 
     <link rel="icon" href="/firebuild-docs/images/favicon.png" type="image/png">
 
-    <title> :: firebuild documentation</title>
+    <title>--ports :: firebuild documentation</title>
 
     
     <link href="/firebuild-docs/css/nucleus.css?1618611818" rel="stylesheet">
@@ -35,7 +35,7 @@
     </style>
     
   </head>
-  <body class="" data-url="/firebuild-docs/">
+  <body class="" data-url="/firebuild-docs/configuration/commands/run/ports/">
     <nav id="sidebar" class="">
 
 
@@ -278,7 +278,7 @@
   
     
     <li data-nav-id="/firebuild-docs/configuration/" title="Configuration" class="dd-item
-        
+        parent
         
         
         ">
@@ -307,7 +307,7 @@
   
     
     <li data-nav-id="/firebuild-docs/configuration/commands/" title="Commands" class="dd-item
-        
+        parent
         
         
         ">
@@ -570,7 +570,7 @@
   
     
     <li data-nav-id="/firebuild-docs/configuration/commands/run/" title="run" class="dd-item
-        
+        parent
         
         
         ">
@@ -599,8 +599,8 @@
   
     
     <li data-nav-id="/firebuild-docs/configuration/commands/run/ports/" title="--ports" class="dd-item
-        
-        
+        parent
+        active
         
         ">
       <a href="/firebuild-docs/configuration/commands/run/ports/">
@@ -1092,61 +1092,112 @@
         <div id="overlay"></div>
         <div class="padding highlightable">
               
+              <div>
+                <div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href='/firebuild-docs/'></a> > <a href='/firebuild-docs/configuration/'>Configuration</a> > <a href='/firebuild-docs/configuration/commands/'>Commands</a> > <a href='/firebuild-docs/configuration/commands/run/'>run</a> > --ports
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+              </div>
+            </div>
+            
         <div id="head-tags">
         
         </div>
+        
+          <div id="chapter">
         
         <div id="body-inner">
           
 
         
 
-<span id="sidebar-toggle-span">
-<a href="#" id="sidebar-toggle" data-sidebar-toggle=""><i class="fas fa-bars"></i> navigation</a>
-</span>
 
- 
-<h1 id="firebuild">firebuild</h1>
-<h2 id="convenience-of-containers-security-of-virtual-machines">Convenience of containers, security of virtual machines</h2>
-<p>With <code>firebuild</code>, you can build and deploy secure VMs directly from <code>Dockerfiles</code> and Docker images in just few minutes.</p>
-<p>The concept of <code>firebuild</code> is to leverage as much of the existing Docker world as possible. There are thousands of Docker images out there. Docker images are awesome because they encapsulate the software we want to run in our workloads, they also encapsulate dependencies. Dockerfiles are what Docker images are built from. Dockeriles are the blueprints of the modern infrastructure. There are thousands of them for almost anything one can imagine and new ones are very easy to write.</p>
-<p>With firebuild it is possible to:</p>
+
+	<h1 id="exposing-guest-ports-on-the-host">Exposing guest ports on the host</h1>
+<p>The <code>--ports</code> argument publishes a guest port on the host interface or all interfaces.</p>
+<p>The following formats are supported:</p>
 <ul>
-<li>build root file systems directly from Dockerfiles</li>
-<li>tag and version root file systems</li>
-<li>run and manage microvms on a single host</li>
-<li>define run profiles</li>
+<li><code>interface:host-port:dest-port:/protocol</code></li>
+<li><code>interface:host-port:dest-port</code></li>
+<li><code>host-port:dest-port:/protocol</code></li>
+<li><code>interface:dest-port</code></li>
+<li><code>host-port:dest-port</code></li>
+<li><code>dest-port:/protocol</code></li>
+<li><code>dest-port</code></li>
 </ul>
-<h2 id="high-level-example">High level example</h2>
-<p>Build and start HashiCorp Consul 1.9.4 on Firecracker with three simple steps:</p>
+<p>There are following rules to the parsing:</p>
 <ul>
-<li>build a base operating system image</li>
-<li>build Consul image</li>
-<li>start the application</li>
+<li><code>interface</code> cannot be longer than 15 characters</li>
+<li>if there is no <code>host-port</code>, the value is copied from the <code>dest-port</code></li>
+<li>port numbers must be higher than <code>9</code>, the parser looks for minimum 2 digits</li>
+<li>if no protocol is specified, <code>/tcp</code> is assumed</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild baseos <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --dockerfile <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>/baseos/_/alpine/3.12/Dockerfile
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild rootfs <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --dockerfile<span style="color:#f92672">=</span>git+https://github.com/hashicorp/docker-consul.git:/0.X/Dockerfile <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machine-builds <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --tag<span style="color:#f92672">=</span>combust-labs/consul:1.9.4
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo firebuild run <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --name<span style="color:#f92672">=</span>consul1 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --from<span style="color:#f92672">=</span>combust-labs/consul:1.9.4 <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --cni-network-name<span style="color:#f92672">=</span>machines <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmlinux-id<span style="color:#f92672">=</span>vmlinux-v5.8
-</code></pre></div><p>Find the IP of the <code>consul1</code> VM and query Consul:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">VMIP<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>sudo firebuild inspect <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --profile<span style="color:#f92672">=</span>standard <span style="color:#ae81ff">\
-</span><span style="color:#ae81ff"></span>    --vmm-id<span style="color:#f92672">=</span>consul1 | jq <span style="color:#e6db74">&#39;.NetworkInterfaces[0].StaticConfiguration.IPConfiguration.IP&#39;</span> -r<span style="color:#66d9ef">)</span>
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ curl http://<span style="color:#e6db74">${</span>VMIP<span style="color:#e6db74">}</span>:8500/v1/status/leader
-<span style="color:#e6db74">&#34;127.0.0.1:8300&#34;</span>
-</code></pre></div>	
-  
+<p>The parser parses the port values as integers but it validates that they are in the range of <code>[1, 65535]</code>. The initial parsing will match any three letter sequence at the protocol location but this is further validated to contain <code>/tcp</code> or <code>/udp</code> only; this check is case sensitive.</p>
+<p>The integration is done via <code>iptables</code>. <a href="/firebuild-docs/networking/firebuild_and_iptables/#guest-ports-exposed-on-the-host">More details here</a>.</p>
+<h2 id="examples">Examples</h2>
+<ol>
+<li>expose guest <code>tcp</code> port <code>16686</code> on host port <code>26686</code> on interface <code>eno1</code>: <code>--port=eno1:26686:16686:/tcp</code></li>
+<li>expose guest <code>udp</code> port <code>6831</code> on host port <code>6831</code> on all interfaces: <code>--port=6831:/tcp</code></li>
+<li>expose guest <code>udp</code> port <code>6831</code> on host port <code>16831</code> on all interfaces: <code>--port=16831:6831:/tcp</code></li>
+</ol>
+<h2 id="metadata-location">Metadata location</h2>
+<p>The ports are stored in the VM metadata at <code>.Configs.RunConfig.Ports</code> path.</p>
+<h2 id="cleanup">Cleanup</h2>
+<p>The ports are cleaned up when executing <code>kill</code> and <code>purge</code> commands for daemonized VMs and immediately on stop for non-daemonized VMs.</p>
+
+
+
+
+
+<footer class=" footline" >
+	
+</footer>
+
+        
+            </div> 
         
         </div>
         
@@ -1295,20 +1346,6 @@
             
                 
                     
-                
-                
-
-                    
-                    
-                        
-                    
-                    
-
-                    
-                        
-            
-            
-                
                     
                 
                 
@@ -1324,6 +1361,25 @@
             
             
                 
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
                     
                 
                 
@@ -1469,6 +1525,7 @@
             
                 
                     
+                    
                 
                 
 
@@ -1483,6 +1540,7 @@
             
             
                 
+                    
                     
                 
                 
@@ -1505,6 +1563,9 @@
             
             
                 
+                    
+                        
+                        
                     
                 
                 
@@ -1761,8 +1822,10 @@
 	 
 	 
 		
+			<a class="nav nav-prev" href="/firebuild-docs/configuration/commands/run/" title="run"> <i class="fa fa-chevron-left"></i></a>
 		
-			<a class="nav nav-next" href="/firebuild-docs/installation/" title="Installation" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+			<a class="nav nav-next" href="/firebuild-docs/configuration/profiles/" title="Profiles" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
 		
 	
     </div>
@@ -1794,4 +1857,3 @@
 
   </body>
 </html>
-

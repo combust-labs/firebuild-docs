@@ -59,7 +59,7 @@
   </url>
   
   <url>
-    <loc>https://combust-labs.github.io/firebuild-docs/networking/exposing_on_host/</loc>
+    <loc>https://combust-labs.github.io/firebuild-docs/networking/firebuild_and_iptables/</loc>
   </url>
   
   <url>
@@ -85,6 +85,10 @@
   <url>
     <loc>https://combust-labs.github.io/firebuild-docs/</loc>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://combust-labs.github.io/firebuild-docs/configuration/commands/run/ports/</loc>
   </url>
   
   <url>

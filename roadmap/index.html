@@ -12,20 +12,20 @@
     <title>Roadmap :: firebuild documentation</title>
 
     
-    <link href="/firebuild-docs/css/nucleus.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/fontawesome-all.min.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/hybrid.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/featherlight.min.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/perfect-scrollbar.min.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/auto-complete.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/atom-one-dark-reasonable.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/theme.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/tabs.css?1618432794" rel="stylesheet">
-    <link href="/firebuild-docs/css/hugo-theme.css?1618432794" rel="stylesheet">
+    <link href="/firebuild-docs/css/nucleus.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/fontawesome-all.min.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/hybrid.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/featherlight.min.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/perfect-scrollbar.min.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/auto-complete.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/atom-one-dark-reasonable.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/theme.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/tabs.css?1618611818" rel="stylesheet">
+    <link href="/firebuild-docs/css/hugo-theme.css?1618611818" rel="stylesheet">
     
     
 
-    <script src="/firebuild-docs/js/jquery-3.3.1.min.js?1618432794"></script>
+    <script src="/firebuild-docs/js/jquery-3.3.1.min.js?1618611818"></script>
 
     <style>
       :root #header + #content > #left > #rlblock_left{
@@ -51,14 +51,14 @@
     <span data-search-clear=""><i class="fas fa-times"></i></span>
 </div>
 
-<script type="text/javascript" src="/firebuild-docs/js/lunr.min.js?1618432794"></script>
-<script type="text/javascript" src="/firebuild-docs/js/auto-complete.js?1618432794"></script>
+<script type="text/javascript" src="/firebuild-docs/js/lunr.min.js?1618611818"></script>
+<script type="text/javascript" src="/firebuild-docs/js/auto-complete.js?1618611818"></script>
 <script type="text/javascript">
     
         var baseurl = "https:\/\/combust-labs.github.io\/firebuild-docs\/";
     
 </script>
-<script type="text/javascript" src="/firebuild-docs/js/search.js?1618432794"></script>
+<script type="text/javascript" src="/firebuild-docs/js/search.js?1618611818"></script>
 
     
   </div>
@@ -580,6 +580,44 @@
       </a>
       
       
+        <ul>
+          
+          
+            
+          
+          
+
+        
+          
+            
+            
+
+
+
+
+ 
+  
+    
+    <li data-nav-id="/firebuild-docs/configuration/commands/run/ports/" title="--ports" class="dd-item
+        
+        
+        
+        ">
+      <a href="/firebuild-docs/configuration/commands/run/ports/">
+          --ports
+          
+      </a>
+      
+      
+    </li>
+  
+ 
+
+            
+          
+        
+        </ul>
+      
     </li>
   
  
@@ -960,13 +998,13 @@
  
   
     
-    <li data-nav-id="/firebuild-docs/networking/exposing_on_host/" title="Exposing VMs on host interfaces" class="dd-item
+    <li data-nav-id="/firebuild-docs/networking/firebuild_and_iptables/" title="Firebuild and iptables" class="dd-item
         
         
         
         ">
-      <a href="/firebuild-docs/networking/exposing_on_host/">
-          Exposing VMs on host interfaces
+      <a href="/firebuild-docs/networking/firebuild_and_iptables/">
+          Firebuild and iptables
           
       </a>
       
@@ -1103,13 +1141,12 @@
 	<h1 id="roadmap">Roadmap</h1>
 <ol>
 <li>Support STOPSIGNAL. Pass the signal via vminit to the guest and handle when service stop is called.</li>
-<li>Run command: add a <code>--port=host:vmport</code> flag, multiple ok, allow for <code>iface:host:vmport</code> format, if two elements, auto-discover first suitable interface. For each one of those, configure iptables such that ports become available via the host interface.</li>
 <li>Integrate service discovery for run and kill commands. Run should register the machine in the service catalog, kill should remove it. Start with Consul Service Catalog integration but implement as a go-plugin back end so the connectors can be maintained separate from the core.</li>
 </ol>
 <ul>
 <li>Investigate how to use the Consul DNS in a guest such that the VMs can resolve themselves via DNS names. This will serve the first clustering method.</li>
 </ul>
-<ol start="4">
+<ol start="3">
 <li>Create the kernel build command based on the single kernel config already documented on the blog. This will serve as a documentation of the kernel build process.</li>
 <li>Combine <code>baseos</code> and <code>rootfs</code> commands into one command but keep the file system level separation. Rename the rootfs command to something more suitable, like … <code>build? Eliminate the </code>baseos<code>vs</code>rootfs` confusion.</li>
 <li>Provide a wider range of base operating systems: Ubuntu 18.04, 20.04, Red Hat 8 UBI should come first. This will most likely require investigating <code>systemd</code> as <code>init</code>.</li>
@@ -1120,7 +1157,7 @@
 <li>Add a command to create a named volume of a given size and specific file system type. Provide a profile setting for where the volumes are stored and allow volume namespacing, similar to how <code>rootfs</code> images are stored. Store volume metadata next to the volume. Exact metadata to be figured out when implementing.</li>
 <li>Run command: add a <code>--volume=volume-name:/path/in/guest</code> flag, multiple ok, pass volumes info via <code>vminit</code> which will create the required directory in guest, if it does not exist and mount it. VM kill will not remove those volumes so they become de-facto persistent storage for VMs.</li>
 </ul>
-<ol start="9">
+<ol start="8">
 <li>Further extend <code>vminit</code> bootstrap: this will reduce the <code>baseos</code> image size because the setup of <code>ssh</code> and the default user account can be removed, this will also improve startup time.</li>
 </ol>
 <ul>
@@ -1132,22 +1169,26 @@
 <li>Run commands: this will serve as <code>--userdata</code></li>
 <li>Set <code>timezone</code>, default to <code>UTC</code></li>
 </ul>
-<ol start="10">
+<ol start="9">
 <li>Internal event emitter with configurable gRPC plugin based sinks. Enable usage of these via profiles.</li>
 <li>Create tools to manage networking, in the first iteration, CNI bridge networks.</li>
 </ol>
 <ul>
 <li>Figure out how to manage overlay networks so a multi-node Firecracker cluster can be enabled.</li>
 </ul>
-<ol start="12">
+<ol start="11">
 <li>Extract the actual command executors into separate packages, outside of the command implementations.</li>
 <li>CONSIDER: Create a daemon to execute all firebuild operations via gRPC and HTTP API.</li>
 </ol>
 <ul>
 <li>The API will enable operating via tools like Packer, Terraform and Nomad</li>
 </ul>
-<ol start="14">
+<ol start="13">
 <li>Work towards more permissive license</li>
+</ol>
+<h2 id="implemented">Implemented</h2>
+<ol>
+<li><strong>Implemented in <a href="https://github.com/combust-labs/firebuild/pull/55">combust-labs/firebuild/pull/55</a></strong>: Run command: add a <code>--port=host:vmport</code> flag, multiple ok, allow for <code>iface:host:vmport</code> format, if two elements, auto-discover first suitable interface. For each one of those, configure iptables such that ports become available via the host interface.</li>
 </ol>
 
 
@@ -1487,8 +1528,26 @@
 
                     
                     
+                        
+                    
                     
 
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
                     
             
         
@@ -1770,19 +1829,19 @@
     <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
       <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
     </div>
-    <script src="/firebuild-docs/js/clipboard.min.js?1618432794"></script>
-    <script src="/firebuild-docs/js/perfect-scrollbar.min.js?1618432794"></script>
-    <script src="/firebuild-docs/js/perfect-scrollbar.jquery.min.js?1618432794"></script>
-    <script src="/firebuild-docs/js/jquery.sticky.js?1618432794"></script>
-    <script src="/firebuild-docs/js/featherlight.min.js?1618432794"></script>
-    <script src="/firebuild-docs/js/highlight.pack.js?1618432794"></script>
+    <script src="/firebuild-docs/js/clipboard.min.js?1618611818"></script>
+    <script src="/firebuild-docs/js/perfect-scrollbar.min.js?1618611818"></script>
+    <script src="/firebuild-docs/js/perfect-scrollbar.jquery.min.js?1618611818"></script>
+    <script src="/firebuild-docs/js/jquery.sticky.js?1618611818"></script>
+    <script src="/firebuild-docs/js/featherlight.min.js?1618611818"></script>
+    <script src="/firebuild-docs/js/highlight.pack.js?1618611818"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="/firebuild-docs/js/modernizr.custom-3.6.0.js?1618432794"></script>
-    <script src="/firebuild-docs/js/learn.js?1618432794"></script>
-    <script src="/firebuild-docs/js/hugo-learn.js?1618432794"></script>
+    <script src="/firebuild-docs/js/modernizr.custom-3.6.0.js?1618611818"></script>
+    <script src="/firebuild-docs/js/learn.js?1618611818"></script>
+    <script src="/firebuild-docs/js/hugo-learn.js?1618611818"></script>
     
         
-            <script src="/firebuild-docs/mermaid/mermaid.js?1618432794"></script>
+            <script src="/firebuild-docs/mermaid/mermaid.js?1618611818"></script>
         
         <script>
             mermaid.initialize({ startOnLoad: true });
